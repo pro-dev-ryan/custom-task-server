@@ -3,8 +3,8 @@ const { ObjectId } = require("mongodb");
 const { DoIt } = require("../DB/Database");
 const router = express.Router();
 
-router.delete("/getpost:id", async (req, res) => {
-  const id = req.params.id;
+router.delete("/getpost", async (req, res) => {
+  const id = req.query.id;
   const cursor = { _id: ObjectId(id) };
   const result = DoIt.collection("task").deleteOne(cursor);
   if (result?.deletedCount) {

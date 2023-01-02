@@ -13,13 +13,15 @@ const getPost = require("./API/getPost");
 const deleteTask = require("./API/deletePost");
 const updateTask = require("./API/updatePost");
 const addComment = require("./API/addComment");
+const getOneTask = require("./API/postById");
 app.get("/", (req, res) => {
   res.send("Up and flying");
 });
-app.get("/getpost:email", getPost);
-app.delete("/getpost:id", deleteTask);
+app.get("/getpost/:email", getPost);
+app.get("/getpost/single/:id", getOneTask);
+app.delete("/getpost/:id", deleteTask);
 app.post("/addtask", addtask);
-app.put("/getpost:id", updateTask);
+app.put("/getpost/single/:id", updateTask);
 app.post("/addcomment", addComment);
 
 app.listen(port, () => {
